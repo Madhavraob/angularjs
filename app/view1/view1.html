@@ -1,0 +1,35 @@
+<p>This is the partial for view 1.</p>
+
+<script type="text/ng-template" id="/tag-mentions.tpl">
+    <ul class="list-group user-search">
+      <li mentio-menu-item="Tag" ng-repeat="Tag in items" class="list-group-item">
+        <span class="text-primary" ng-bind-html="Tag.name | mentioHighlight:typedTerm:'menu-highlighted' | unsafe"></span>
+      </li>
+    </ul>
+  </script>
+
+<textarea mentio-id="'tinyMceTextArea'" ui-tinymce="tinyMceOptions" mentio mentio-typed-text="typedTerm"
+  mentio-require-leading-space="true" ng-model="Content" mentio-iframe-element="iframeElement"></textarea>
+
+
+<!-- <mentio-menu id="hastmenu" mentio-for="'tinyMceTextArea'" mentio-trigger-char="'#'" mentio-items="tags"
+  mentio-template-url="/tag-mentions.tpl" mentio-search="searchTags(term)" mentio-select="getTagTextRaw(item)">
+</mentio-menu> -->
+
+<mentio-menu id="hastmenu" mentio-for="'tinyMceTextArea'" mentio-trigger-char="'@'" mentio-items="tags"
+  mentio-template-url="/tag-mentions.tpl" mentio-search="searchTags(term)" mentio-select="getTagTextRaw(item)">
+</mentio-menu>
+
+<style>
+  .list-group {
+    border: 2px orangered;
+  }
+  .list-group-item.active,
+  .list-group-item.active:focus,
+  .list-group-item.active:hover {
+    z-index: 2;
+    color: red;
+    background-color: yellow;
+    border-color: #337ab7;
+  }
+</style>
